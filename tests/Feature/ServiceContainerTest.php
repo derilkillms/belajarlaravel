@@ -4,6 +4,9 @@ namespace Tests\Feature;
 
 use App\Data\Foo;
 use App\Data\Person;
+use App\Data\Bar;
+use App\Services\HelloService;
+use App\Services\HelloServiceIndonesia;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -11,7 +14,7 @@ use Tests\TestCase;
 
 class ServiceContainerTest extends TestCase
 {
-   public function testDependencyInjection()
+   public function testDependency()
    {
         //    $foo = new Foo();
         $foo = $this->app->make(Foo::class); // new Foo()
@@ -63,6 +66,34 @@ class ServiceContainerTest extends TestCase
         self::assertEquals("Diconic",$person1->firstname);
         self::assertEquals("Diconic",$person2->firstname);
         self::assertSame($person1,$person2);
+   }
+
+   public function testDependencyInjection()
+   {
+        $this->app->singleton(Foo::class, function($app){
+            return new Foo();
+        });
+
+        $this->app->singleton(Bar::class, function($app){
+            return new Bar($app->make(Foo::class));
+        });
+        
+        $bar1 = $this->app->make(Bar::class);
+        $bar2 = $this->app->make(Bar::class);
+
+        self::assertSame($bar1,$bar2);
+   }
+
+   public function testInterfaceToClass()
+   {
+    // $this->app->singleton(HelloService::class,HelloServiceIndonesia::class);
+    $this->app->singleton(HelloService::class, function($app){
+        return new HelloServiceIndonesia();
+    });
+
+    $helloService = $this->app->make(HelloService::class);
+    self::assertEquals('Hello Deril',$helloService->hello('Deril'));
+    
    }
 
 }
