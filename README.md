@@ -7,6 +7,19 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## materi
+- artisan
+- request lifecycle
+- unit testing
+- environment
+- application environment
+- configuration
+- configuration cache
+- dependency injection
+- service container
+- service provider
+- facades
+
 ## menjalankan laravel
 php artisan serve
 
@@ -22,18 +35,21 @@ php artisan config:cache
 ## membuat provider
 php artisan make:provider FooBarServiceProvider
 
-# app make
+## clear all cache provider
+php artisan clear-compiled
+
+## app make
 ```php
 $foo = $this->app->make(Foo::class); // new Foo()
 ```
 
-# singletons
+## singletons
 ```php
  $this->app->singleton(Foo::class, function(){
             return new Foo();
         });
 ```
-# bind
+## bind
 ```php
 $this->app->bind(Person::class,function($app){
             return new Person("Diconic","Academy");

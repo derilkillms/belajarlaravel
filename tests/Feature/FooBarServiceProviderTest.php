@@ -33,5 +33,11 @@ class FooBarServiceProviderTest extends TestCase
        $helloService2 = $this->app->make(HelloService::class);
 
        self::assertSame($helloService1,$helloService2);
+
+       self::assertEquals('Hello Deril', $helloService1->hello('Deril'));
+    }
+    public function testEmpty()
+    {
+      self::assertTrue(true);
     }
 }
