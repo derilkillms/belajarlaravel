@@ -23,7 +23,7 @@
 - view
 - static file public
 - mixing resource
-- route parameter
+- route parameter ->next regex constraints
 
 ## command line
 ```php

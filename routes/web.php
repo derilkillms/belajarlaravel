@@ -37,3 +37,13 @@ Route::get('/hello-again',function(){
 Route::get('/hello-world',function(){
     return view('hello.world',['name'=>'Tetsuya']);
 });
+
+Route::get('/products/{id}', function ($productid)
+{
+   return "Products : $productid";
+});
+
+Route::get('/products/{product}/item/{item}', function ($productid, $itemid)
+{
+    return "Products : $productid , Item : $itemid";
+});

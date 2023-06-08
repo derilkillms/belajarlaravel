@@ -32,4 +32,16 @@ class RoutingTest extends TestCase
         $this->view('hello',['name'=>'Deril'])
         ->assertSeeText('Hello Deril');
     }
+
+    public function testRouteParameter()
+    {
+       $this->get('/products/1')
+       ->assertSeeText('Products : 1');
+
+       $this->get('/products/2')
+       ->assertSeeText('Products : 2');
+
+       $this->get('/products/1/item/xxx')
+       ->assertSeeText('Products : 1 , Item : xxx');
+    }
 }
