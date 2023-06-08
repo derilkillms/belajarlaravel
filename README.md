@@ -19,24 +19,42 @@
 - service container
 - service provider
 - facades
+- routing
+- view
+- static file public
+- mixing resource
+- route parameter
 
-## menjalankan laravel
+## command line
+```php
+// menjalankan laravel
 php artisan serve
 
-## membuat unit-test
-php artisan make:test
+// membuat unit-test
+php artisan make:test ClassTest
 
-## menjalankan unit test
-php artisan test
+// menjalankan unit test
+php artisan test --filter testFunction
 
-## setting cache
+// setting cache
 php artisan config:cache
 
-## membuat provider
+// membuat provider
 php artisan make:provider FooBarServiceProvider
 
-## clear all cache provider
+// clear all cache provider
 php artisan clear-compiled
+
+// melihat semua route di laravel
+php artisan route:list
+
+// compile template blade
+php artisan view:cache
+
+// clear compile template blade
+php artisan view:clear
+
+```
 
 ## app make
 ```php
