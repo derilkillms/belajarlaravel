@@ -78,3 +78,14 @@ $this->app->bind(Person::class,function($app){
             return new Person("Diconic","Academy");
         });
 ```
+
+## request
+```php
+$request->path();
+
+$request->method(); // mengambil http method
+$request->isMethod('post'); //mengecek ketersediaan method true/false
+$request->header(key,default);
+
+$request->bearerToken();
+```
