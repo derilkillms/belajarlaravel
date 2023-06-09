@@ -44,4 +44,40 @@ class RoutingTest extends TestCase
        $this->get('/products/1/item/xxx')
        ->assertSeeText('Products : 1 , Item : xxx');
     }
+
+    public function testRouteParameterRegex()
+    {
+        $this->get('/categories/1')
+       ->assertSeeText('Categoryid : 1');
+       
+       $this->get('/categories/xxx')
+       ->assertSeeText('404 by derillab.com');
+    }
+    
+    public function testParameterOptional()
+    {
+        $this->get('/users/deril')
+        ->assertSeeText('Userid : deril');
+
+        $this->get('/users')
+        ->assertSeeText('Userid : 404');
+    }
+
+    public function testRouteConflict()
+    {
+        $this->get('/conflict/muhammad')
+        ->assertSeeText('Name : muhammad');
+
+        $this->get('/conflict/deril')
+        ->assertSeeText('Name : muhammad deril');
+    }
+
+    public function testNamedRoute()
+    {
+        $this->get('/produk/1')
+        ->assertSeeText('Link : http://localhost/products/1');
+
+        $this->get('/product-redirect/1')
+        ->assertRedirect('/products/1');
+    }
 }

@@ -23,7 +23,9 @@
 - view
 - static file public
 - mixing resource
-- route parameter ->next regex constraints
+- route parameter , regex constraints
+- controller
+- request (PR)
 
 ## command line
 ```php
@@ -53,6 +55,9 @@ php artisan view:cache
 
 // clear compile template blade
 php artisan view:clear
+
+// controller
+php artisan make:controller HelloController
 
 ```
 
