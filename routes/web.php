@@ -89,8 +89,15 @@ Route::get('/product-redirect/{id}', function ($id)
    return redirect()->route('product.detail',['id'=>$id]);
 });
 
+
 Route::get('/controller/hello/request',[\App\Http\Controllers\HelloController::class,'request']);
+Route::get('/controller/hello/nganu',[\App\Http\Controllers\HelloController::class,'nganu']);
 Route::get('/controller/hello/{name}',[\App\Http\Controllers\HelloController::class,'hello']);
+
+
+Route::get('/input/hello',[\App\Http\Controllers\InputController::class,'hello']);
+Route::post('/input/hello',[\App\Http\Controllers\InputController::class,'hello']);
+Route::post('/input/hello/first',[\App\Http\Controllers\InputController::class,'helloFirstName']);
 
 
 
