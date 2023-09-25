@@ -72,5 +72,43 @@ class InputControllerTest extends TestCase
     }
 
 
+    public function testFilterOnly() {
+        $this->post('/input/filter/only',[
+            "name"=>[
+                "first" => "Muhammad",
+                "middle"=> "Deril",
+                "last" => "Pranata"
+            ]
+        ])->assertSeeText("Muhammad")->assertSeeText("Pranata")
+        ->assertDontSeeText("Deril");
+    }
+
+    public function testFilterExcept() {
+
+        $this->post('/input/filter/except',[
+            "username"=>"deriltetsuya",
+            "password"=>"thisispass",
+            "admin"=>"true"
+        ])->assertSeeText("deriltetsuya")->assertSeeText("thisispass")
+        ->assertDontSeeText("admin");
+        
+    }
+
+
+    public function testFilterMerge() {
+
+        $this->post('/input/filter/merge',[
+            "username"=>"deriltetsuya",
+            "password"=>"thisispass",
+            "admin"=>"true"
+        ])->assertSeeText("deriltetsuya")->assertSeeText("thisispass")
+        ->assertSeeText("admin")->assertSeeText("false");
+        
+    }
+
+
+
+
+
 
 }
