@@ -73,7 +73,7 @@ class InputControllerTest extends TestCase
 
 
     public function testFilterOnly() {
-        $this->post('/input/filter/only',[
+        $this->post('/input/only',[
             "name"=>[
                 "first" => "Muhammad",
                 "middle"=> "Deril",
@@ -85,7 +85,7 @@ class InputControllerTest extends TestCase
 
     public function testFilterExcept() {
 
-        $this->post('/input/filter/except',[
+        $this->post('/input/except',[
             "username"=>"deriltetsuya",
             "password"=>"thisispass",
             "admin"=>"true"
@@ -97,7 +97,7 @@ class InputControllerTest extends TestCase
 
     public function testFilterMerge() {
 
-        $this->post('/input/filter/merge',[
+        $this->post('/input/merge',[
             "username"=>"deriltetsuya",
             "password"=>"thisispass",
             "admin"=>"true"
