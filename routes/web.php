@@ -85,7 +85,7 @@ Route::get('/produk/{id}', function ($id)
 
 Route::get('/product-redirect/{id}', function ($id)
 {
-   
+
    return redirect()->route('product.detail',['id'=>$id]);
 });
 
@@ -113,5 +113,13 @@ Route::post('/input/merge',[\App\Http\Controllers\InputController::class,'filter
 Route::post('/file/upload',[\App\Http\Controllers\FileController::class,'upload']);
 
 Route::get('/response/hello',[\App\Http\Controllers\ResponseController::class,'response']);
+Route::get('/response/header',[\App\Http\Controllers\ResponseController::class,'header']);
+Route::get('/response/view',[\App\Http\Controllers\ResponseController::class,'responseView']);
+Route::get('/response/json',[\App\Http\Controllers\ResponseController::class,'responseJson']);
+Route::get('/response/file',[\App\Http\Controllers\ResponseController::class,'responseFile']);
+Route::get('/response/download',[\App\Http\Controllers\ResponseController::class,'responseDownload']);
 
+Route::get('/cookie/set',[\App\Http\Controllers\CookieController::class,'createCookie']);
+Route::get('/cookie/get',[\App\Http\Controllers\CookieController::class,'getCookie']);
+Route::get('/cookie/clear',[\App\Http\Controllers\CookieController::class,'clearCookie']);
 
