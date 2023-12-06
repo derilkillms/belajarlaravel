@@ -2,6 +2,9 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\InvalidOrderException;
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -23,6 +26,7 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         //
+        ValidationException::class
     ];
 
     /**
@@ -43,8 +47,15 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(function (\Exception $exception) {
             //
+            var_dump($exception);
+            // return false;
+        });
+
+        $this->renderable(function (ValidationException $exception, Request $request) {
+            return response("Bad Request",400);
+
         });
     }
 }
