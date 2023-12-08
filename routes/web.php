@@ -190,6 +190,6 @@ Route::get('/error/validation', function () {
 });
 
 Route::get('/abort/400', function () {
-    abort(201);
+    abort(400, "Ups validation error");
 });
 
