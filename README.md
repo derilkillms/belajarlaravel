@@ -100,6 +100,14 @@ php artisan serve
 //menggunakan key
 php artisan down --secret="deril"
 php artisan serve
-127.0.0.1:8888/deril //deril adalah secret key yang akan masuk ke cookie
+127.0.0.1:8000/deril //deril adalah secret key yang akan masuk ke cookie
 
 ```
+
+## materi selanjutnya
+- Laravel Blade Template
+- Laravel Database / Eloquent
+- Laravel Validation
+- Laravel Command
+- Laravel HTTP Client
+
